@@ -48,11 +48,36 @@
             <artifactId>lombok</artifactId>
         </dependency>
 
+        <!--JPA是一种规范，hibernate这个是实现 -->
+        <dependency>
+            <groupId>org.hibernate.javax.persistence</groupId>
+            <artifactId>hibernate-jpa-2.0-api</artifactId>
+            <version>1.0.1.Final</version>
+        </dependency>
+
+
+
+
+        <!-- 阿里系的Druid依赖包 -->
         <!--<dependency>
             <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>1.2.54</version>
+            <artifactId>druid</artifactId>
+            <version>1.1.10</version>
         </dependency>-->
+
+
+        <!-- Druid连接池启动器，加了这个yml文件里面的
+         druid:
+            initial-size: 5
+            min-idle: 5
+            max-active: 12
+        才会自动出现
+         -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+            <version>1.1.10</version>
+        </dependency>
 
     </dependencies>
 
