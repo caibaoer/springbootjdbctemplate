@@ -30,6 +30,7 @@ public class StudentController {
      * @param id
      * @return
      */
+
     @RequestMapping(value = "student/{id}", method = RequestMethod.GET)
     public ResponseEntity<ResultBody> getStudentById (@PathVariable(value = "id") Integer id){
         ResultBody resultBody = new ResultBody();
