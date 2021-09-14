@@ -1,6 +1,7 @@
 package com.service;
 
 import com.pojo.Student;
+import com.pojo.Student2;
 import com.pojo.User;
 
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.List;
  * @Created by huangwencai
  */
 public interface StudentService {
+    Student2 getlocalDateStudentById(Integer id);
     Student getStudentById(Integer id);
     public List<Student> getStudentList();
     public int add(Student user);

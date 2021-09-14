@@ -1,6 +1,7 @@
 package com.dao;
 
 import com.pojo.Student;
+import com.pojo.Student2;
 import com.pojo.User;
 
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.List;
  */
 public interface StudentDao {
     Student getStudentById(Integer id);
+    Student2 getlocalDateStudentById(Integer id);
     public List<Student> getStudentList();
     public int add(Student student);
     public int update(Integer id, Student student);

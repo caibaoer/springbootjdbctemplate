@@ -3,6 +3,7 @@ package com.dao.impl;
 import com.dao.StudentDao;
 import com.dao.UserDao;
 import com.pojo.Student;
+import com.pojo.Student2;
 import com.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -39,6 +40,12 @@ public class StudentDaoImpl implements StudentDao {
         Object[] arr={id};
         List<Student> students2= jdbcTemplate.query("select * from tb_student where id = ?",new BeanPropertyRowMapper<Student>(Student.class),arr);
        return students.get(0);
+    }
+
+    @Override
+    public Student2 getlocalDateStudentById(Integer id) {
+        List<Student2> list = jdbcTemplate.query("select * from tb_student2", new BeanPropertyRowMapper(Student2.class) );
+        return list.get(0);
     }
 
     @Override

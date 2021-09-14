@@ -1,7 +1,9 @@
 package com.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.pojo.ResultBody;
 import com.pojo.Student;
+import com.pojo.Student2;
 import com.pojo.User;
 import com.service.StudentService;
 import com.service.UserService;
@@ -24,6 +26,24 @@ public class StudentController {
 
     @Autowired
     private StudentService studentService;
+
+
+    @RequestMapping(value = "localDatestudent/{id}", method = RequestMethod.GET)
+    public ResponseEntity<ResultBody> getLocalDateStudentById (@PathVariable(value = "id") Integer id){
+        ResultBody resultBody = new ResultBody();
+        try {
+            Student2 student = studentService.getlocalDateStudentById(id);
+            System.out.println(JSON.toJSONString(student));
+            resultBody.setData(student);
+            resultBody.setSuccess(true);
+        } catch (Exception e) {
+            resultBody.setSuccess(false);
+            e.printStackTrace();
+        }
+        return ResponseEntity.ok(resultBody);
+    }
+
+
 
     /**
      * 根据ID查询用户

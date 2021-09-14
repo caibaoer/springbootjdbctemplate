@@ -3,6 +3,7 @@ package com.service.impl;
 import com.dao.StudentDao;
 import com.dao.UserDao;
 import com.pojo.Student;
+import com.pojo.Student2;
 import com.pojo.User;
 import com.service.StudentService;
 import com.service.UserService;
@@ -21,6 +22,12 @@ import java.util.List;
 public class StudentServiceImpl implements StudentService {
     @Autowired
     private StudentDao studentDao;
+
+    @Override
+    public Student2 getlocalDateStudentById(Integer id) {
+        return studentDao.getlocalDateStudentById(id);
+    }
+
     @Override
     public Student getStudentById(Integer id) {
         return studentDao.getStudentById(id);
