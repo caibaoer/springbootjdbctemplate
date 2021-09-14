@@ -5,6 +5,7 @@ import com.dao.UserDao;
 import com.pojo.Student;
 import com.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -25,20 +26,24 @@ public class StudentDaoImpl implements StudentDao {
     private JdbcTemplate jdbcTemplate;  //这个是系统自带的
     @Override
     public Student getStudentById(Integer id) {
-        List<Student> list=jdbcTemplate.query("select * from tb_student where id = ?",
-                new Object[]{id},
-                new BeanPropertyRowMapper(Student.class)
-        );
-        if(CollectionUtils.isEmpty(list)){
-            return null;
-        }else {
-            return list.get(0);
-        }
+
+        String studentss= jdbcTemplate.queryForObject("select nick_name from tb_student where user_name=?",String.class);
+
+
+        Date date=jdbcTemplate.queryForObject("select birth_day from tb_student where user_name='zs'",Date.class);
+
+        int a=0;
+        //方式一
+       List<Student> students= jdbcTemplate.query("select * from tb_student where id = ?",new BeanPropertyRowMapper<>(Student.class),id);
+        //方式二
+        Object[] arr={id};
+        List<Student> students2= jdbcTemplate.query("select * from tb_student where id = ?",new BeanPropertyRowMapper<Student>(Student.class),arr);
+       return students.get(0);
     }
 
     @Override
     public List<Student> getStudentList() {
-        List<Student> list = jdbcTemplate.query("select * from tb_student", new Object[]{}, new BeanPropertyRowMapper(Student.class));
+        List<Student> list = jdbcTemplate.query("select * from tb_student", new BeanPropertyRowMapper(Student.class) );
         return list;
     }
 
